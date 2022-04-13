@@ -1,0 +1,25 @@
+
+<div class="container">
+    <div class="row mt-5 justify-content-md-center">
+        <div class="col-md-9">
+            <div class="card ">
+                <div class="card-body">
+                    <h5 class="card-title text-light text-center pt-2 pb-2 bg-dark strong"><%= event.title  %> </h5>
+                    <p class="card-text text-monospace info"><%= event.description  %> </p>
+                    <p><span class="text-primary strong details"> Location: </span> <span class="info">
+                        <%= event.location  %></span> </p>
+                       <hr class="mt-5">
+<h4>
+                    <p class="badge badge-warning w-50"> <b class="text-info"> Created At :</b> <%= event.created_at.getDate() %> / <%= event.created_at.getMonth() +1 %> / <%= event.created_at.getFullYear() %></p>
+                    <h3 class="d-block">
+                    <p class="badge badge-danger text-left pl-5 w-75"> <b class="text-info">Event Date: </b> <%= event.date.getDate() %> / <%= event.date.getMonth() +1 %> / <%= event.date.getFullYear() %></p>
+                    </h3>       
+</h4>
+                       <a href="/events/event/edit/<%= event._id  %>" class="btn btn-primary pl-5 pr-5 ls3"> Edit</a>
+                    <button id="deleteBTN" onclick="deleteEvent()" data-set="<%= event._id  %>" class="btn btn-danger pl-5 pr-5 ls3"> Delete</button>
+                        </center>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

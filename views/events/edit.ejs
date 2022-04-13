@@ -1,0 +1,71 @@
+<form class="container mt-3 bg-special pt-5 pb-5" method="post" action="/events/event/edit/<%= event._id  %>">
+  <div class="w-100 bg-success text-center p-3 info ls3 strong"> Editing New Event</div>
+  <div class="form-group mt-1">
+    <label for="exampleFormControlInput1" class="details ls3">Event Title</label>
+    
+        <%   if(errors.length != 0){  %>
+      
+    <%  for( i =0 ; i < errors.length ; i++) {
+        if(errors[i].param == 'title'){ %>
+          <div class="alert-danger p-2 text-center">
+          <%= errors[i].msg %>
+          </div>
+   <% break}}} %> 
+    
+
+    <input name="title" type="text" value="<%=event.title%>" class="form-control" id="exampleFormControlInput1" placeholder="University_party">
+  </div>
+
+  <div class="form-group mt-5">
+    <label for="exampleFormControlTextarea1" class="details ls3">Description</label>
+   
+        <%   if(errors.length != 0){  %>
+    <%  for( i =0 ; i < errors.length ; i++) {
+        if(errors[i].param == 'description'){ %>
+          <div class="alert-danger p-2 text-center">
+          <%= errors[i].msg %>
+          </div>
+   <%   break  }} } %> 
+   
+    <textarea name="description" class="form-control" id="exampleFormControlTextarea1" rows="3"><%=event.description%></textarea>
+  </div>
+
+   <div class="row">
+    <div class="form-group col mt-5">
+          <label for="exampleFormControlInput1" class="details ls3">Event Location</label>
+    <%   if(errors.length != 0){  %>
+    <%  for( i =0 ; i < errors.length ; i++) {
+        if(errors[i].param == 'location'){ %>
+          <div class="alert-danger p-2 text-center">
+          <%= errors[i].msg %>
+          </div>
+   <%   break  }}} %>         
+        
+          <input name="location" type="text" value="<%=event.location%>" class="form-control" id="exampleFormControlInput1" placeholder="University - online - Egypt">
+    </div>
+
+        <div class="form-group col mt-5">
+          <label for="exampleFormControlInput1" class="details ls3">Event Date</label>
+
+    <%   if(errors.length != 0){  %>
+    <%  for( i =0 ; i < errors.length ; i++) {
+        if(errors[i].param == 'date'){ %>
+          <div class="alert-danger p-2 text-center">
+          <%= errors[i].msg %>
+          </div>
+   <%   break  }}} %> 
+
+          <input name="date" id="dating" type="date" class="form-control"  value="<%=date%>" id="exampleFormControlInput1" placeholder="University - online - Egypt">
+          <input id="mydiv" type="text" value="<%=date%>" hidden>
+        </div>
+    <script>
+      document.getElementById("dating").value = document.getElementById("mydiv").value
+    </script>
+  </div>
+
+  
+          <input name="user_id" type="text" value="<%=user._id%>" hidden>
+  <div class="d-flex justify-content-center">
+    <button type="submit" class="btn btn-primary w-75 info ls3">Save</button>
+  </div>
+</form>

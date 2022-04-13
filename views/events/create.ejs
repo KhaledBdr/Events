@@ -1,0 +1,64 @@
+<form class="container mt-3 bg-special pt-5 pb-5" method="post" action="/events/create">
+  <div class="w-100 bg-success text-center p-3 info ls3 strong"> Creating New Event</div>
+  <div class="form-group mt-1">
+    <label for="exampleFormControlInput1" class="details ls3">Event Title</label>
+
+
+ 
+    <%  for( i =0 ; i < errors.length ; i++) {
+        if(errors[i].param == 'title'){ %> 
+    <div class="alert-danger p-2 text-center">
+          <%= errors[i].msg %>
+      </div>
+   <%    break }} %> 
+
+
+    <input name="title" type="text" class="form-control" id="exampleFormControlInput1" placeholder="University_party">
+  </div>
+
+  <div class="form-group mt-5">
+    <label for="exampleFormControlTextarea1" class="details ls3">Description</label>
+    
+   <%  for( i =0 ; i < errors.length ; i++) {
+        if(errors[i].param == 'description'){ %> 
+    <div class="alert-danger p-2 text-center">
+          <%= errors[i].msg %>
+      </div>
+   <%    break }} %> 
+
+    <textarea name="description" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+  </div>
+
+   <div class="row">
+    <div class="form-group col mt-5">
+          <label for="exampleFormControlInput1" class="details ls3">Event Location</label>
+   <%  for( i =0 ; i < errors.length ; i++) {
+        if(errors[i].param == 'location'){ %> 
+    <div class="alert-danger p-2 text-center">
+          <%= errors[i].msg %>
+      </div>
+   <%    break }} %> 
+          
+
+          <input name="location" type="text" class="form-control" id="exampleFormControlInput1" placeholder="University - online - Egypt">
+    </div>
+
+        <div class="form-group col mt-5">
+          <label for="exampleFormControlInput1" class="details ls3">Event Date</label>
+
+   <%  for( i =0 ; i < errors.length ; i++) {
+        if(errors[i].param == 'date'){ %> 
+    <div class="alert-danger p-2 text-center">
+          <%= errors[i].msg %>
+      </div>
+   <%    break }} %> 
+          
+
+          <input name="date" type="date" class="form-control" id="exampleFormControlInput1" placeholder="University - online - Egypt">
+    </div>
+  </div>
+<input type="text" value="<%=user._id%>" name="user_id" style="display:none;">
+  <div class="d-flex justify-content-center">
+    <button type="submit" class="btn btn-primary w-75 info ls3">Create</button>
+  </div>
+</form>

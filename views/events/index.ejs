@@ -1,0 +1,61 @@
+
+
+
+<div class="container">
+    <div class="row mt-3">
+        <% if (events){ %> 
+        <% for(i=0 ; i<events.length ; i++ ){ %>
+        <div class="col-sm-6 col-md-4 mb-2">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title text-light text-center pt-2 pb-2 bg-dark strong"><%= events[i].title  %> </h5>
+                    <p class="card-text text-monospace"><%= events[i].description  %> </p>
+                    <p><span class="text-primary strong b"> Location: </span><%= events[i].location  %> </p>
+                       <hr class="mt-5">
+                    <p class="badge badge-warning"> <i class="text-info"> Created At :</i> <%= events[i].created_at.getDate() %>/<%= events[i].created_at.getMonth() +1 %>/<%= events[i].created_at.getFullYear() %></p>
+                    
+                    <p class="badge badge-secondary text-center "> <i class="text-danger">Event Date: </i> <%= events[i].date.getDate() %> / <%= events[i].date.getMonth() +1 %> / <%= events[i].date.getFullYear() %></p>
+
+                    
+                    <% if(active == 'home'){ %> 
+                    <a href="/events/event/<%= events[i]._id  %> " class="btn btn-primary">Show more</a>
+                    <% }else{ %> 
+                    <button id="deleteBTN" onclick="deleteEvent()" data-set="<%= events[i]._id  %>" class="btn btn-danger">Delete Event</button>    
+                        <% } %> 
+                </div>
+            </div>
+        </div>
+    <%  }} %> 
+    </div>
+
+    <% if(events){ %> 
+         
+<nav aria-label="..." class="j">
+  <ul class="pagination pagination-lg  justify-content-center mt-3 mt-lg-5">
+      <% for(let i=1 ; i<= Math.ceil(NORecords/5) ; i++){ %> 
+        <% if(active == 'home'){ %> 
+        <% if(i == pageNo){ %> 
+            <%pageNo  %> 
+    <li class="page-item active"><a class="page-link" href="/events/<%=i%>"><%=i  %><span class="sr-only">(current)</span> </a></li>
+            <% }else{ %> 
+    <li class="page-item"><a class="page-link" href="/events/<%=i%>"><%=i  %> </a></li>
+    <% }}else{ %>
+          <% if(i == pageNo){ %> 
+            <%pageNo  %> 
+    <li class="page-item active"><a class="page-link" href="/events/endedEvents/<%=i%>"><%=i  %><span class="sr-only">(current)</span> </a></li>
+            <% }else{ %> 
+    <li class="page-item"><a class="page-link" href="/events/endedEvents/<%=i%>"><%=i  %> </a></li>
+    <% }}} %> 
+  </ul>
+</nav>
+<% } %> 
+
+</div>
+
+<% if(alert === 'deleted successfully'){%>
+        <script>
+            window.onload=function(){
+            alert('one Event deleted Successfully')
+            }
+        </script>
+<% } %> 

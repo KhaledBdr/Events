@@ -1,0 +1,60 @@
+  <% if(users.length != 0){ %>  
+    <div class="container pt-3 d-flex flex-wrap justify-content-around align-content-around ">
+
+  <% users.forEach((user)=>{ %> 
+  <div class="card mt-3 animate__animated animate__swing animate__repeat-1 " style="width: 20rem;">
+    <img src="/<%=user.image%> " class="card-img-top mt-2 mx-auto  animate__animated animate__bounceInDown animate__repeat-1 img-thumbnail rounded-circle" alt="user Image" style="min-width: 50%;max-width: 51%;">
+    <hr>
+    <div class="card-body animate__animated animate__bounceInLeft animate__repeat-1">
+      <h5 class="card-title"><span>Name: </span> <span class="text-primary"><%=user.name%></span></h5>
+      <p class="card-text"><span class="h5">Email: </span> <span class="text-primary"><%=user.email%></span> </p>
+
+
+
+
+      <p class="card-text"><span class="font-italic">Join Date : </span> <b><%=user.joinDate.getDate()%> / <%=user.joinDate.getMonth()+1%> / <%=user.joinDate.getFullYear()%> </b></p>
+      <hr>       
+      <a href="/users/deleteUser/<%=user._id%>" class="btn btn-danger btn-lg float-right">delete
+      </a>
+
+            <a href = "mailto:<%=user.email%>?subject = Feedback&body = Message" class="btn btn-primary btn-lg">
+            Send feedback
+            </a>
+            <% if(mainUser.isSuperAdmin){ %> 
+            <% if(!user.isAdmin){ %> 
+            <a href="/users/makeAdmin/<%=user._id%>" class="details mt-2 btn btn-block btn-success btn-lg float-right">Make Admin
+              <% } %> 
+
+            <% if(user.isAdmin){ %> 
+            <a href="/users/removeAdmin/<%=user._id%>" class="details mt-2 btn btn-block btn-dark btn-lg float-right">Remove Administration Role Admin
+              <% } %> 
+              <% }else{%>
+                <span class="mt-2 btn btn-block btn-warning"><i> Is Admin : </i> <b class="text-dark"> <%= user.isAdmin %></b> </span>
+              <% }%> 
+      </a>
+    </div>
+  </div>
+  <% })%>
+
+  </div>
+
+
+  <nav aria-label="..." class="j">
+  <ul class="pagination pagination-lg  justify-content-center mt-3 mt-lg-5">
+      <% for(let i=1 ; i<= Math.ceil(NORecords/5) ; i++){ %> 
+        <% if(i == pageNo){ %> 
+            <%pageNo  %> 
+    <li class="page-item active"><a class="page-link" href="/users/allUsers/<%=i%>"><%=i  %><span class="sr-only">(current)</span> </a></li>
+            <% }else{ %> 
+    <li class="page-item"><a class="page-link" href="/users/allUsers/<%=i%>"><%=i  %> </a></li>
+    <% }} %> 
+  </ul>
+</nav>
+
+
+<% }else{ %> 
+<div class=" container d-flex align-items-center flex-column mt-5 mt-lg-3 ">
+    <img src="/noUser.jpg" alt="img No" class="w-75">
+    <h1 class="ls3 animate__animated animate__bounce animate__repeat-2 animate__delay-5s">No Users Yet</h1>
+</div>
+    <% } %> 

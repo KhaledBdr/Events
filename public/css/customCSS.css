@@ -1,0 +1,29 @@
+
+.strong{
+    font-weight: bolder;
+}
+
+.details{
+    font-family: 'Lato',Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    letter-spacing: 2.5px;
+    font-size: larger;
+}
+.info{
+    font-size: larger;
+    font-family: 'Arial Narrow Bold', sans-serif;
+}
+.ls3{
+ letter-spacing: 3px   
+}
+.bg-special{
+background: #ECE9E6;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #FFFFFF, #ECE9E6);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #FFFFFF, #ECE9E6); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
+.w-45{
+    width: 45%;
+}
+.w-55{
+    width: 55%;
+}

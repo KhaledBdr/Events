@@ -1,0 +1,51 @@
+
+    <!-- Font Icon -->
+    <link rel="stylesheet" href="/forms/fonts/material-icon/css/material-design-iconic-font.min.css">
+
+    <!-- Main css -->
+    <link rel="stylesheet" href="/forms/css/style.css">
+
+<div class="main">
+    <section class="sign-in">
+            <div class="container">
+                <div class="signin-content">
+                    <div class="signin-image">
+                        <figure><img src="/forms/images/signin-image.jpg" alt="sing up image"></figure>
+                        <a href="../users/register" class="signup-image-link">Create an account</a>
+                    </div>
+
+                    <div class="signin-form">
+                        <h2 class="form-title">Login</h2>
+                        <form method="POST" class="register-form" action="/users/login" id="login-form">
+                            <div class="form-group">
+                                <label for="your_name"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                                <input type="text" name="email" id="your_name" placeholder="Your Email"/>
+                            </div>
+<% for(let i =0 ; i< errors.length ; i++){ 
+        if (errors[i].param === 'email'){%>
+      <div class="alert-danger p-2 text-center">
+          <%=errors[i].msg%>
+       </div>
+       <% break }}  %>
+                            <div class="form-group">
+                                <label for="your_pass"><i class="zmdi zmdi-lock"></i></label>
+                                <input type="password" name="password" id="your_pass" placeholder="Password"/>
+
+                            </div>
+<% for(let i =0 ; i< errors.length ; i++){ 
+        if (errors[i].param === 'password'){%>
+      <div class="alert-danger p-2 text-center">
+          <%=errors[i].msg%>
+       </div>
+       <% break }}  %>
+
+                            <div class="form-group form-button">
+                                <input type="submit" name="signin" id="signin" class="form-submit" value="Log in"/>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>

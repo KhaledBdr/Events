@@ -1,0 +1,72 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark text-uppercase">
+  <div class="container-fluid">
+    <a class="navbar-brand <% if (active == 'img'){ %> active  shadow <% } %> " href="/events/1">
+        <img src="/events.jpg" width="40" height="40" alt="">
+      </a>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ">
+  <% if(active === 'login' || active === 'register'){} else{%> 
+        <li class="nav-item">
+          <a class="nav-link <% if(active == 'home'){ %> active shadow  <% } %> " aria-current="page" href="/events/1">Home</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link <% if(active == 'today'){ %> active shadow  <% } %> " aria-current="page" href="/events/Today/1">
+            Today Events
+              <span class="badge badge-light"><%= num %> </span>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link <% if(active == 'endedEvents'){ %> active shadow  <% } %> " aria-current="page" href="/events/endedEvents/1">Expired Events</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link <% if(active == 'create'){ %> active shadow  <% } %>" href="/events/create">Add new Event</a>
+        </li>
+        <% if(user.isAdmin){ %> 
+        <li class="nav-item">
+          <a class="nav-link <% if(active == 'users'){ %> active shadow  <% } %>" href="/users/allusers/1"> App Users</a>
+        </li>
+        <% } %> 
+        </ul>
+<% } %> 
+        <ul class="navbar-nav ml-auto">
+          <% if(login){ %>
+
+            
+
+        <li class="nav-item">
+          <a class="nav-link <% if(active == 'logout'){ %> active shadow  <% } %>" href="/users/logout">
+            <i class="bi bi-person-x"></i>
+            Logout
+          </a>
+        </li>
+
+        <li class="">
+          <a class="<% if(active == 'profile'){ %> active <% } %>" href="/users/profile">
+            <% if(user.image){%> 
+              <img class="rounded-circle" height="55px" width="55px" src="/<%=user.image%>"></img>
+              <% }else{ %> 
+              <img class="rounded-circle" height="55px" width="55px" src="/default.jpg"></img>
+            <% } %> 
+          
+          </a>
+        </li>
+            <% }else{ %>  
+        <li class="nav-item">
+          <a class="nav-link <% if(active == 'login'){ %> active <% } %>" href="/users/login">Login</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link <% if(active == 'register'){ %> active <% } %>" href="/users/register">Register</a>
+        </li>
+        <% } %>
+         
+      </ul>
+    </div>
+  </div>
+</nav>

@@ -1,0 +1,91 @@
+
+
+    <!-- Font Icon -->
+    <link rel="stylesheet" href="/forms/fonts/material-icon/css/material-design-iconic-font.min.css">
+
+    <!-- Main css -->
+    <link rel="stylesheet" href="/forms/css/style.css">
+
+    <div class="main">
+
+        <!-- Sign up form -->
+        <section class="signup">
+            <div class="container">
+                <div class="signup-content">
+                    <div class="signup-form">
+                        <h2 class="form-title">Sign up</h2>
+                        <form method="POST" enctype="multipart/form-data" action="/users/register" class="register-form" id="register-form">
+                            <div class="form-group">
+                                <label for="name"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                                <input type="text" name="userName" id="name" placeholder="Your Name" value="<%= data.userName %>"/>
+                            </div>
+<% for(let i =0 ; i< errors.length ; i++){ 
+        if (errors[i].param === 'userName'){%>
+      <div class="alert-danger p-2 text-center">
+          <%=errors[i].msg%>
+       </div>
+       <% break }}  %>
+                            <div class="form-group">
+                                <label for="email"><i class="zmdi zmdi-email"></i></label>
+                                <input type="email" name="email" id="email" placeholder="Your Email" value="<%= data.email%>"/>
+                            </div>
+ 
+<% for(let i =0 ; i< errors.length ; i++){ 
+        if (errors[i].param === 'email'){%>
+      <div class="alert-danger p-2 text-center">
+          <%=errors[i].msg%>
+       </div>
+       <% break }}  %> 
+
+<div class="input-group mb-3 mt-5">
+  <div class="custom-file">
+    <input type="file" name="image" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
+    <label class="custom-file-label" for="inputGroupFile01">Upload Image (Optional)</label>
+  </div>
+</div>
+
+<% for(let i =0 ; i< errors.length ; i++){ 
+        if (errors[i].param === 'image'){%>
+      <div class="alert-danger p-2 text-center">
+          <%=errors[i].msg%>
+       </div>
+       <% break }}  %>
+       
+       
+       <div class="form-group">
+                                <label for="pass"><i class="zmdi zmdi-lock"></i></label>
+                                <input type="password" name="password" id="pass" placeholder="Password" value="<%= password%>"/>
+                            </div>
+<% for(let i =0 ; i< errors.length ; i++){ 
+        if (errors[i].param === 'password'){%>
+      <div class="alert-danger p-2 text-center">
+          <%=errors[i].msg%>
+       </div>
+       <% break }}  %>
+                            <div class="form-group">
+                                <label for="re-pass"><i class="zmdi zmdi-lock-outline"></i></label>
+                                <input type="password" name="re_password" id="re_pass" placeholder="Repeat your password" value="<%= re_password%>"/>
+                            </div>
+<% for(let i =0 ; i< errors.length ; i++){ 
+        if (errors[i].param === 're_password'){%>
+      <div class="alert-danger p-2 text-center">
+          <%=errors[i].msg%>
+       </div>
+       <% break }}  %> 
+                            <div class="form-group">
+                                <input type="checkbox" name="agree-term" id="agree-term" class="agree-term" onclick="EnDisBTN()" />
+                                <label for="agree-term" class="label-agree-term"><span><span></span></span>I agree all statements in  <a href="#" class="term-service">Terms of service</a></label>
+                            </div>
+                            <div class="form-group form-button">
+                                <input type="submit" name="signup" id="signup" class="form-submit" value="Register" disabled/>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="signup-image">
+                        <figure><img src="/forms/images/signup-image.jpg" alt="sing up image"></figure>
+                        <a href="login" class="signup-image-link">I am already member</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        </div>
